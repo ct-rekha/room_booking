@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
- 		@user = User.find(params[:id])
+ 		@user = User.find(params[:_id])
 	end
 
 	def new
@@ -15,21 +15,21 @@ class UsersController < ApplicationController
  	end
 
 	def create
- 		@user = User.find(params[:id])
+ 		@user = User.new(user_params)
  		if @user.save
  			flash[:success] = "you have successfully signed up"
  			redirect_to root_path
  		else
- 			render 'new'
+ 			render 'show'
  		end
  	end
 
  	def edit
- 		@user = User.find(params[:id])
+ 		@user = User.find(params[:_id])
 	end
 
  	def update
- 		params.require(:user).permit(:name, :email)
+ 		@user = User.find(params[:_id])
  		if @user.update(user_params)
  			flash[:notice]="you have successfully updated your profile"
  			redirect_to @user
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
  	# end
 
  	def user_params
- 		params.require(:student).permit(:name, :email)
+ 		params.require(:user).permit(:name, :email)
  	end
 end
 
