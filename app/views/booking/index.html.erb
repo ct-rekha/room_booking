@@ -1,19 +1,20 @@
 <div class="row">
 	<div class="col s12">
-		<h3 class="center-align">Rooms Listing</h3>
+		<h3 class="center-align">Booking</h3>
 	</div>
 </div>
 
 <div class="row">
-	<%= @rooms.each do |room|%>
+	<%= @bookings.each do |user|%>
 	    <div class="col s6 m6">
 	      <div class="card blue-grey darken-1">
 	        <div class="card-content white-text">
-	          <span class="card-title">Name: <%= room.name %></span>
-	          <p>Description: <%= room.description%></p>
+	          <span class="card-title">start_time: <%= user.start_time %></span>
+	          <p>end_time: <%= user.end_time%></p>
+	          <p>Booking :None</p>
 	        </div>
 	        <div class="card-action">
-	        	<li><%= link_to "BookNow",new_booking_path %></li>
+	          <a href="booking_index_path">View Profile</a>
 	       	</div>
 	      </div>
 	    </div>

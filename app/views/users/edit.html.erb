@@ -32,8 +32,14 @@
 						</div>
 						<div class="row">
 							<div class="input-field col s12">
-								<%= f.email_field :email, placeholder: "Enter your email address" %>
+								<%= f.text_field :email, placeholder: "Enter your email address" %>
 								<%= f.label :email %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.text_field :password_digest, placeholder: "Enter your password " %>
+								<%= f.label :password %>
 							</div>
 						</div>
 						<div class="row">

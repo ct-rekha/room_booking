@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'users#new'
   resources :users, except: [:new]
   resources :rooms
+  resources :booking
   # get 'users/index', to: 'users#index'
   # get 'users/:id/edit', to: 'users#edit'
   # get 'users/:id', to: 'users#show'
