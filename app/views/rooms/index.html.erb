@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col s12">
-		<h3 class="center-align">Rooms Listing</h3>
+		<h3 class="center-align">Rooms Directory </h3>
 	</div>
 </div>
 
@@ -13,9 +13,11 @@
 	          <p>Description: <%= room.description%></p>
 	        </div>
 	        <div class="card-action">
-	        	<li><%= link_to "BookNow",new_booking_path %></li>
+	          <%= link_to "BookNow", new_booking_path %>
 	       	</div>
 	      </div>
 	    </div>
     <% end %>
 </div>
+            
+    

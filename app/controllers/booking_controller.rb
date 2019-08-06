@@ -1,37 +1,49 @@
 class BookingController < ApplicationController
 
 	def index
-		@bookings = Booking.all
+	 	@bookings = Booking.all
+	end
+
+	def show
+ 		@booking = Booking.find(params[:id])
 	end
 
 	def new
 		@booking = Booking.new
-	end
+ 	end
 
 	def create
-		@booking = Booking.new(start_time: Time.now,user_id: @users.id,room_id: @rooms.id)
-		# @booking.room = @rooms
-		if @booking.save
-			redirect_to room_bookings_path
-		else
-			render 'new'
-		end
+ 		@booking = Booking.new(booking_params)
+ 		if @booking.save
+ 			flash[:success] = "you have successfully signed up"
+ 			render 'show'
+ 		else
+ 			redirect_to rooms_path
+ 		end
+ 	end
+
+ 	def edit
+ 		@booking= Booking.find(params[:id])
 	end
 
-	def edit
-		
-	end
+ 	def update
+ 		@booking = Booking.find(params[:id])
+ 		if @user.update(booking_params)
+ 			flash[:notice]="you have successfully updated your profile"
+ 			redirect_to @booking
+ 		else
+ 			render 'edit'
+ 		end
+ 	end
 
+ 	private 
 
-	def show
-		
+ 	# def set_user
+ 	# 	@user = User.find(params[:id])
+ 	# end
 
-	end
-
-	private
-
-	def booking_params
- 		params.require(:user).permit(:start_time, :end_time)
+ 	def booking_params
+ 		params.require(:booking).permit(:start_time, :end_time,:length)
  	end
 
 end

@@ -5,13 +5,14 @@
 </div>
 
 <div class="row">
-	<%= @bookings.each do |user|%>
+	<%= @bookings.each do |b|%>
 	    <div class="col s6 m6">
 	      <div class="card blue-grey darken-1">
 	        <div class="card-content white-text">
-	          <span class="card-title">start_time: <%= user.start_time %></span>
-	          <p>end_time: <%= user.end_time%></p>
-	          <p>Booking :None</p>
+	          <span class="card-title">start_time: <%= b.start_time %></span>
+	          <p>end_time: <%= b.end_time%></p>
+	          <p>length: <%= b.length %></p>
+	          <p>Booking :none</p>
 	        </div>
 	        <div class="card-action">
 	          <a href="booking_index_path">View Profile</a>
