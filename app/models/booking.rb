@@ -1,6 +1,12 @@
 class Booking
 	include Mongoid::Document
+	
+	belongs_to :room
+
 	field :start_time, type: DateTime
 	field :end_time, type: DateTime
-	field :length, type: Integer
+
+	validates :start_time, presence: true
+	validates :end_time, presence: true
+
 end

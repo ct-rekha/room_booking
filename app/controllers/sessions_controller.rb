@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       redirect_to rooms_path, notice: "Logged in!"
     else
       flash.now[:alert] = "Email or password is invalid"
-      redirect_to rooms_path, notice: "Logged in!"
-      #redirect_to root_url
+      #redirect_to rooms_path, notice: "Logged in!"
+      redirect_to root_url
     end
   end
 

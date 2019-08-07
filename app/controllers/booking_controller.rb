@@ -1,5 +1,7 @@
 class BookingController < ApplicationController
 
+	before_action :set_user, only: [:edit, :update]
+
 	def index
 	 	@bookings = Booking.all
 	end
@@ -15,7 +17,7 @@ class BookingController < ApplicationController
 	def create
  		@booking = Booking.new(booking_params)
  		if @booking.save
- 			flash[:success] = "you have successfully signed up"
+ 			flash[:success] = "you have successfully booked your conference room"
  			render 'show'
  		else
  			redirect_to rooms_path
@@ -23,27 +25,29 @@ class BookingController < ApplicationController
  	end
 
  	def edit
- 		@booking= Booking.find(params[:id])
+ 		# @booking= Booking.find(params[:id])
 	end
 
  	def update
- 		@booking = Booking.find(params[:id])
+ 		# @booking = Booking.find(params[:id])
  		if @user.update(booking_params)
  			flash[:notice]="you have successfully updated your profile"
- 			redirect_to @booking
+ 			render 'show'
+ 			#redirect_to @booking
  		else
- 			render 'edit'
+ 			#render 'edit'
+ 			redirect_to @booking
  		end
  	end
 
  	private 
 
- 	# def set_user
- 	# 	@user = User.find(params[:id])
- 	# end
+ 	def set_user
+ 		@user = User.find(params[:id])
+ 	end
 
  	def booking_params
- 		params.require(:booking).permit(:start_time, :end_time,:length)
+ 		params.require(:booking).permit(:start_time, :end_time)
  	end
 
 end

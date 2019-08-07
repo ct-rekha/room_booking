@@ -1,14 +1,30 @@
 <!-- <h1>Sessions#new</h1> -->
 <!-- <p>Find me in app/views/sessions/new.html.erb</p> -->
-
-<p id="alert"><%= alert %></p><h1>Login</h1><%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-  </div>  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
-<% end %>
+<div class="container">
+	<div class="row center sign-up-form">
+		<div class="col s10 m10 l10">
+			<div class="card-panel">
+				<div class="row">
+					<%= form_tag sessions_path do |form| %>
+						<div class="field">
+							<div class="input-field col s10">
+								<%= label_tag :email %>
+								<%= text_field_tag :email%>
+							</div>
+						</div>
+						<div class="field">
+							<div class="input-field col s10">
+								<%= label_tag :password %>
+								<%= password_field_tag :password%>
+							</div>
+						</div>
+						</div>
+						<div class="actions">
+	    					<%= submit_tag "Login" %>
+	  					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
