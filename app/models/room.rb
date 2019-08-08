@@ -1,6 +1,6 @@
 class Room
 	include Mongoid::Document
-	has_many :users, autosave: true
+	# has_many :users, autosave: true
 
 	field :name, type: String
 	field :description, type: String

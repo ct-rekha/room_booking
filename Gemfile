@@ -34,6 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 4.2'
 
 gem "simple_calendar", "~> 2.0"
+gem 'validates_overlap'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

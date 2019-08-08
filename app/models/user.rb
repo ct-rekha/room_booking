@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	include Mongoid::Document
 	
-	belongs_to :room
+	# belongs_to :room
 	
 	field :name, type: String
 	field :email, type: String
