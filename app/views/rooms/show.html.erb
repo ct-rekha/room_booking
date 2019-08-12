@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col s6 m6">
+	  <div class="card blue-grey darken-1">
+	    <div class="card-content white-text">
+	      <span class="card-title">Name: <%= @room.name %></span>
+	      <span class="card-title">Description: <%= @room.description %></span>
+	      <div class="card-action">
+	        <%= link_to "BookNow", new_booking_path(:room_id => @room) %>
+	       </div>
+	    </div>
+	  </div>
+	</div>
+</div>

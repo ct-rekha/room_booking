@@ -1,6 +1,6 @@
 class BookingController < ApplicationController
 
-	before_action :set_user, only: [:edit, :update]
+	before_action :set_booking, only: [:edit, :update]
 
 	def index
 		@bookings = Booking.all
@@ -11,16 +11,21 @@ class BookingController < ApplicationController
 	end
 
 	def new
-		@booking = Booking.new
+		@booking = Booking.new()
 	end
 
+
 	def create
-		if Booking.where(:start_time => booking_params["start_time"], :end_time => booking_params["end_time"]).exists?
+		@room = Room.find(:room_id)
+		# p "*"*2
+		p @room
+		if (Booking.where(:start_time => booking_params["start_time"]) and Booking.where(:end_time => booking_params["end_time"]) or Booking.where(:room_id => booking_params["room_id"])).exists?		
 			flash[:notice]="room not available"
-			#render 'show'
 			redirect_to rooms_path
+			#render 'show'
+			# format.html {redirect_to rooms_path, notice: 'room is not available'}
 		else
-			@booking = Booking.find_or_create_by!(:start_time => booking_params["start_time"], :end_time => booking_params["end_time"])
+			@booking = Booking.create!(:start_time => booking_params["start_time"], :end_time => booking_params["end_time"], name: current_user.name,:room_id => booking_params["room_id"])
 			if @booking.save!
 				flash[:success] = "you have successfully booked your conference room"
 				render 'show'
@@ -34,8 +39,8 @@ class BookingController < ApplicationController
 
 	def update
 		# @booking = Booking.find(params[:id])
-		if @user.update(booking_params)
-			flash[:notice]="you have successfully updated your profile"
+		if @booking.update(booking_params)
+			flash[:success]="you have successfully updated your profile"
 			#render 'show'
 			redirect_to @booking
 		else
@@ -44,14 +49,14 @@ class BookingController < ApplicationController
 		end
 	end
 
-	private 
+	# private 
 
 	def set_user
-		@user = User.find(params[:id])
+		@booking = Booking.find(params[:id])
 	end
 
 	def booking_params
-		params.require(:booking).permit(:start_time, :end_time)
+		params.require(:booking).permit(:start_time, :end_time, :name, :room_id)
 	end
 
 end

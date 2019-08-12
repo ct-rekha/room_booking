@@ -2,12 +2,17 @@
 	<div class="col s6 m6">
 	  <div class="card blue-grey darken-1">
 	    <div class="card-content white-text">
-	      <span class="card-title">name: <%= current_user.name %></span>
+	      <span class="card-title">name: <%= @booking.name %></span>
+	      <p>Room_id: <%= @booking.room_id%></p>
 	      <p>start_time: <%= @booking.start_time %></p>
 	      <p>end_time: <%= @booking.end_time %></p>
-	      <p>Booking :Booked</p>
+	      <p>Status :Booked</p>
 	    </div>
 	  </div>
 	  <%= link_to '<i class="material-icon right"></i>Edit your booking'.html_safe, edit_booking_path(@booking), class: "waves-effect waves-light btn" %>
 	</div>
 </div>
+
+
+
+

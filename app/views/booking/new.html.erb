@@ -1,6 +1,6 @@
 <% if @booking.errors.any? %>
 	<span class="white-text">
-		<strong><%= pluralize(@user.errors.count, "error") %></strong>
+		<strong><%= pluralize(@booking.errors.count, "error") %></strong>
 		prohibited your profile from being created
 		<ul>
 			<% @booking.errors.full_messages.each do |message|%>
@@ -10,11 +10,20 @@
 	</span>
 <% end %>
 
-
-<%= form_for(@booking, :url => {:controller => :booking, action: :create}) do |f| %>  
-	<%= f.datetime_field :start_time, class: 'form-control' %>
-    <%= f.label :start_time %>
-    <%= f.datetime_field :end_time, prompt: true,class: 'form-control' %>
-    <%= f.label :end_time %>
-   	<%= f.submit "Add", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+	<div class="row center sign-up-form">
+		<div class="col s10 m10 l10">
+			<div class="card-panel">
+				<div class="row">
+					<%= form_for(@booking, :url => {:controller => :booking, action: :create}) do |f| %>  	<%= f.datetime_field :start_time, class: 'form-control' %>
+					    <%= f.label :start_time %>
+					    <%= f.datetime_field :end_time, prompt: true,class: 'form-control' %>
+					    <%= f.label :end_time %>	
+					    <%= f.hidden_field :room_id, :value => params[:room_id] %>			    
+						<%= f.submit "Add", class: "btn btn-primary" %>	
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
