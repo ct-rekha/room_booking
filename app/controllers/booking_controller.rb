@@ -16,16 +16,12 @@ class BookingController < ApplicationController
 
 
 	def create
-		@room = Room.find(:room_id)
-		# p "*"*2
-		p @room
+		@room = Room.where(:id => booking_params["room_id"]).first
 		if (Booking.where(:start_time => booking_params["start_time"]) and Booking.where(:end_time => booking_params["end_time"]) or Booking.where(:room_id => booking_params["room_id"])).exists?		
 			flash[:notice]="room not available"
 			redirect_to rooms_path
-			#render 'show'
-			# format.html {redirect_to rooms_path, notice: 'room is not available'}
 		else
-			@booking = Booking.create!(:start_time => booking_params["start_time"], :end_time => booking_params["end_time"], name: current_user.name,:room_id => booking_params["room_id"])
+			@booking = @room.bookings.create!(:start_time => booking_params["start_time"], :end_time => booking_params["end_time"], name: current_user.name,:room_id => booking_params["room_id"])
 			if @booking.save!
 				flash[:success] = "you have successfully booked your conference room"
 				render 'show'
@@ -49,7 +45,7 @@ class BookingController < ApplicationController
 		end
 	end
 
-	# private 
+	private 
 
 	def set_user
 		@booking = Booking.find(params[:id])

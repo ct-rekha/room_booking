@@ -4,6 +4,7 @@ class Booking
 	belongs_to :room
 	
 	field :name, type: String
+	field :status,type: String, :default => "Booked"
 	field :start_time, type: DateTime
 	field :end_time, type: DateTime
 

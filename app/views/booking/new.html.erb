@@ -1,3 +1,6 @@
+<%= link_to '<i class="material-icon right"></i>Logout'.html_safe, logout_path(@user), class: "waves-effect waves-light btn" %>
+
+
 <% if @booking.errors.any? %>
 	<span class="white-text">
 		<strong><%= pluralize(@booking.errors.count, "error") %></strong>
