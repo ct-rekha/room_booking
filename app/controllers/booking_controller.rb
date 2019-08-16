@@ -1,6 +1,6 @@
 class BookingController < ApplicationController
 
-	before_action :set_booking, only: [:edit, :update]
+	before_action :set_booking, only:[:edit, :update]
 
 	def index
 		@bookings = Booking.all
@@ -30,7 +30,7 @@ class BookingController < ApplicationController
 	end
 
 	def edit
-		# @booking= Booking.find(params[:id])
+		@booking= Booking.find(params[:id])
 	end
 
 	def update
