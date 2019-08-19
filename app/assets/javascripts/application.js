@@ -14,10 +14,22 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-datepicker
+//= require datetime_picker_input 
+//= require jquery-ui/widgets/datepicker
 
-$( document ).on('turbolinks:load',function()
-{
-	$('.sidenav').sidenav();
-	$(".dropdown-trigger").dropdown();
+// $( document ).on('turbolinks:load',function()
+// {
+// 	$('.sidenav').sidenav();
+// 	$(".dropdown-trigger").dropdown();
 	        
-})
+// })
+
+// $(document).on("focus", "[data-behaviour~='datepicker']", function(e)
+// {
+//     $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true})
+// });
+
+$(function() {
+  $('.datetimepicker').datetimepicker();
+});

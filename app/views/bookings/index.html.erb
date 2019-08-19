@@ -13,15 +13,13 @@
 	      <div class="card blue-grey darken-1">
 	        <div class="card-content white-text">
 	          <% @room = Room.where(:id => b.room_id).first%>
-	          <span class="card-title">Room_name: <%= @room.name %></span>
-	          <p>User: <%= b.name %></p>
+	          <span class="card-title">Room_name: <%= b.name %></span>
+	          <p>User: <%= current_user.name %></p>
 	          <p>start_time: <%= b.start_time%></p>
 	          <p>end_time: <%= b.end_time%></p>
 	          <p>Status: <%= b.status%></p>
+	          <%= link_to '<i class="material-icon right"></i>View'.html_safe, booking_path(b,:room_id => @room,:name => b.name), class: "waves-effect waves-light btn" %>
 	        </div>
-	        <div class="card-action">
-	          <a href="booking_index_path">View Profile</a>
-	       	</div>
 	      </div>
 	    </div>
 	<% end %>

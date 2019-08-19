@@ -1,6 +1,22 @@
 class Booking
 	include Mongoid::Document
 	
+	# validate :overlapping
+
+	# scope :overlapping, -> { |Booking|
+	# 	where("start_date <= ? AND ? <= end_date", Booking.end_date, Booking.start_date)
+ #  	}
+
+	# private
+
+	# def no_reservation_overlap
+	#   if (Booking.overlapping(start_time, end_time).any?)
+	#      errors.add(:end_time, 'it overlaps another reservation')
+	#   end
+	# end
+
+
+
 	belongs_to :room
 	
 	field :name, type: String

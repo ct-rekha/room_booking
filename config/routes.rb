@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, except: [:new]
   resources :rooms
-  resources :booking
+  resources :bookings
   
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new', as: 'login'

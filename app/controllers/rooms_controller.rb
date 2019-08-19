@@ -1,12 +1,19 @@
 class RoomsController < ApplicationController
 
+  # before_action :user_is_logged_in
+
   def new
   	@room = Room.new
   end
 
   def index
-  	@rooms = Room.all
-  end
+    if session[:user_id] == nil
+      flash[:notice] = "Your not logged in user"
+      redirect_to root_path 
+    else
+      @rooms = Room.all
+    end    
+ end
 
 
   def show

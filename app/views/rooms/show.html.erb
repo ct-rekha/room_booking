@@ -5,7 +5,7 @@
 	      <span class="card-title">Name: <%= @room.name %></span>
 	      <p>Description: <%= @room.description %></p>
 	      <div class="card-action">
-	        <%= link_to "BookNow", new_booking_path(:room_id => @room) %>
+	        <%= link_to "BookNow", new_booking_path(:room_id => @room,:name => @room.name) %>
 	      </div>
 	    </div>
 	  </div>

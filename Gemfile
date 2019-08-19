@@ -33,8 +33,13 @@ gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 4.2'
 
+gem 'jquery-ui-rails'
 gem "simple_calendar", "~> 2.0"
+gem 'datetime_picker_input' 
+gem 'bootstrap-datetimepicker-rails'
+gem 'bootstrap-datepicker-rails'
 gem 'validates_overlap'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

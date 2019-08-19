@@ -1,0 +1,40 @@
+<%= link_to '<i class="material-icon right"></i>Logout'.html_safe, logout_path(@user), class: "waves-effect waves-light btn" %>
+<h5>Booking for room: <%= params[:name] %></h5>
+
+<div class="container">
+	<div class="row center sign-up-form">
+		<div class="col s10 m10 l10">
+			<div class="card-panel">
+				<div class="row">
+					<%= form_for(@booking, :url => {:controller => :bookings, action: :create}) do |f| %> 
+							<%= f.datetime_field :start_time, class: 'form-control' %>
+					    <%= f.label :start_time %>
+					    <%= f.datetime_field :end_time%>
+					    <%= f.label :end_time %>	
+					    <%= f.hidden_field :room_id, :value => params[:room_id] %>	
+					    <%= f.hidden_field :name, :value => params[:name] %>	
+						<%= f.submit "Add", class: "btn btn-primary" %>	
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
