@@ -2,26 +2,18 @@
 
 <%= link_to '<i class="material-icon right"></i>BookedRooms'.html_safe,  bookings_path, class: "waves-effect waves-light btn" %>
 
-<div class="row">
-	<div class="col s12">
-		<h3 class="center-align">Room Directory</h3>
-	</div>
-</div>
 
-<div class="row">
-	<%= @rooms.each do |room| %>
-		<div class="col s6 m6">
-	      <div class="card blue-grey darken-1">
-	        <div class="card-content white-text">
-	          <span class="card-title">Name: <%= room.name %></span>
-	          <p>Description: <%= room.description%></p>
-	        </div>
-	        <div class="card-action">
-	          <%= link_to "Show", room_path(room) %>
-	       	</div>
-	      </div>
-	   </div> 
-  <% end %>
-</div>
-            
+<%= form_for(@room) do |f| %>
+  <%= f.label :start_at, "Start" %>
+  <%= f.datetime_field :start_at%>
+
+  <%= f.label :end_at, "End" %>
+  <%= f.datetime_field :end_at%>
+
+  <%= f.submit "Add"%>
+<% end %>
+<%= render 'layouts/rooms' %>
+
+
+     
     

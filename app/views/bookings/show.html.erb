@@ -4,16 +4,18 @@
 	<div class="col s6 m6">
 	  <div class="card blue-grey darken-1">
 	    <div class="card-content white-text">
-	      <span class="card-title">User: <%= current_user.name %></span>
+	      <span class="card-title">User: <%= @booking.username %></span>
 	      <span class="card-title">Room: <%= @booking.name %></span>
-	      <p>start_time: <%= @booking.start_time %></p>
-	      <p>end_time: <%= @booking.end_time %></p>
+	      <p>start_time: <%= @booking.start_time.utc %></p>
+	      <p>end_time: <%= @booking.end_time.utc %></p>
 	      <p>Status: <%= @booking.status %></p>
 	    </div>
 	  </div>
-	  <%= link_to '<i class="material-icon right"></i>Edit'.html_safe, edit_booking_path(@booking,:room_id => @room,:name => @booking.name), class: "waves-effect waves-light btn" %>
+	  <% if @booking.username == current_user.name %>
+	  	<%= link_to '<i class="material-icon right"></i>Edit'.html_safe, edit_booking_path(@booking,:room_id => params[:room_id],:name => @booking.name), class: "waves-effect waves-light btn" %>
+	  	<%= link_to 'Delete', @booking, method: :delete, data: { confirm: 'Are you sure want to delete?'}, class: "waves-effect waves-light btn" %>
+	  <% end %>
 	  <%= link_to '<i class="material-icon right"></i>Rooms'.html_safe, rooms_path, class: "waves-effect waves-light btn" %>
-	  <%= link_to 'Destroy', @booking, method: :delete, data: { confirm: 'Are you sure?'}, class: "waves-effect waves-light btn" %>
 	</div>
 </div>
 

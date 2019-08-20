@@ -3,8 +3,9 @@
     <%= f.label :start_time %>
     <%= f.datetime_field :end_time, prompt: true,class: 'form-control' %>
     <%= f.label :end_time %>
+    <%= f.hidden_field :User, :value => @booking.name %>
     <%= f.hidden_field :room_id, :value => params[:room_id] %>
     <%= f.hidden_field :name, :value => params[:name] %>
     
-    <%= f.submit "Add", class: "btn btn-primary" %>
+    <%= f.submit "Edit", class: "btn btn-primary" %>
 <% end %>
