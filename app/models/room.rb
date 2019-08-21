@@ -3,22 +3,16 @@ class Room
 
 	has_many :bookings
 
-  field :start_at, type: DateTime
-  field :end_at, type: DateTime
 	field :name, type: String
 	field :description, type: String
 
   validates :name, uniqueness: true
 
+  def self.search(search)
+    if search     
+      return Room.all
+    else
+      return Room.all
+    end
+  end
 end
-
-
-
-
-
-
-
-
-
-
-
