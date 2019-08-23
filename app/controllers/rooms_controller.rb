@@ -1,7 +1,5 @@
 class RoomsController < ApplicationController
 
-  # before_action :user_is_logged_in
-
   def new
   	@room = Room.new
   end
@@ -11,9 +9,9 @@ class RoomsController < ApplicationController
       flash[:notice] = "Your not logged in user"
       redirect_to root_path 
     else
-      @rooms = Room.search(params[:search])
+      @rooms = Room.filter(room_params) 
     end    
- end
+  end
 
 
   def show
@@ -36,6 +34,6 @@ class RoomsController < ApplicationController
  	private
 
  	def room_params
- 		params.require(:room).permit(:name, :description, :search)
+ 		params.permit(:name, :description, :start,:end)
  	end
 end

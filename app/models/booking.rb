@@ -20,8 +20,8 @@ class Booking
 	def self.date_exists(booking_params)
 		if booking_params[:start_time] <= Time.current or booking_params[:end_time] < booking_params[:start_time] 
 			return true
-		elsif (Booking.where(:start_time => booking_params["start_time"]) and Booking.where(:end_time => booking_params["end_time"]) or Booking.where(:room_id => booking_params["room_id"])).exists?		
-			return true
+		# elsif (Booking.where(:start_time => booking_params["start_time"]) and Booking.where(:end_time => booking_params["end_time"]) or Booking.where(:room_id => booking_params["room_id"])).exists?		
+		# 	return true
 		else
 			return false
 		end

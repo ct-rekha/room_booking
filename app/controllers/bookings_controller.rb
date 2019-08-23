@@ -8,7 +8,8 @@ class BookingsController < ApplicationController
     	flash[:notice] = "Your not logged in user"
     	redirect_to root_path 
 		else
-			@bookings = Booking.all.order("created_at DESC")
+			@bookings = Booking.all
+			# order("created_at DESC")
 		end
 	end
 
@@ -48,14 +49,22 @@ class BookingsController < ApplicationController
 	end
 
 	def update
-		@room = Room.where(:id => booking_params[:room_id]).first
-		@booking = Booking.find(params[:id])
-		if @booking.update!(booking_params)
-			flash[:success]="you have successfully updated your profile"
-			render 'show'
+		if Booking.date_exists(booking_params)
+			flash[:notice]="Room is not available in this time period"
+			redirect_to edit_booking_path(:room_id => booking_params[:room_id],:name => booking_params[:name])
+
+
+		elsif Booking.available(booking_params)
+			flash[:notice]="Room is not available in this time period"
+			redirect_to edit_booking_path(:room_id => booking_params[:room_id],:name => booking_params[:name])
+
 		else
-			flash[:notice] = "enter correct date"
-			render 'edit'
+			@room = Room.where(:id => params[:room_id]).first
+			@booking = Booking.find(params[:id])
+			if @booking.update!(booking_params)
+				flash[:success]="you have successfully updated your profile"
+				render 'show'
+			end
 		end
 	end
 

@@ -8,14 +8,11 @@
   </div>
 </div>
 
-</h4>Search By Dates</h4>
-  <%= form_tag(rooms_path, methods: :get) do %>
-    <%= datetime_field_tag :search,params[:search] %>
-    <%= submit_tag("Search")%>
-  <% end %>
-
-
-
+<%= form_tag(rooms_path, method: :get) do %>
+   <%= datetime_field_tag :start,params[:start], placeholder: "Enter start time", autofocus: true%>
+   <%= datetime_field_tag :end,params[:end],placeholder: "Enter end time", autofocus: true %>
+   <%= submit_tag("Search")%>
+ <% end %>
 
 <div class="row">
   <%= @rooms.each do |room| %>
@@ -32,9 +29,4 @@
     </div> 
   <% end %>
 </div>
-                  
-
-
-
-
 
