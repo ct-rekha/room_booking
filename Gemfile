@@ -31,7 +31,7 @@ gem 'jquery-rails'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.7'
 
 gem 'jquery-ui-rails'
 gem "simple_calendar", "~> 2.0"
